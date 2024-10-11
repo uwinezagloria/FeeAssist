@@ -4,7 +4,10 @@ const schoolSchema=mongoose.Schema({
        type:String 
     },
     SchoolLogo:{
-type:Sting
+type:String
+    },
+    SchoolEmail:{
+type:String
     },
     SchoolAdrress:{
 Province:{
