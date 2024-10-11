@@ -9,7 +9,7 @@ type:String
     SchoolEmail:{
 type:String
     },
-    SchoolAdrress:{
+    SchoolAddress:{
 Province:{
     type:String
 },

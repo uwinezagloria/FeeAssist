@@ -3,9 +3,11 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import errorHandler from "./middlewares/errorHandler.js";
 import customError from "./middlewares/customError.js";
+import router from "./routes/index.js";
 dotenv.config();
 const app=express();
 app.use(express.json());
+app.use(router)
 app.all('*',(req,res,next)=>{
     const err=new customError(`Can't find ${req.originalUrl} on this Server`,404)
     next(err)
