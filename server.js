@@ -1,9 +1,15 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import errorHandler from "./middlewares/errorHandler.js";
+import customError from "./middlewares/customError.js";
 dotenv.config();
 const app=express();
 app.use(express.json());
+app.all('*',(req,res,next)=>{
+    const err=new customError(`Can't find ${req.originalUrl} on this Server`,404)
+    next(err)
+})
 const database_string=process.env.DATABASE;
 const port=process.env.PORT;
 //connect to database
@@ -18,3 +24,4 @@ mongoose.connect(database_string)
     console.log("database not connected")
     console.log(error.message)
 })
+app.use(errorHandler)
