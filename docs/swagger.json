@@ -1,0 +1,160 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "title": "FEEASSIST",
+      "description": "FEEASSIST DOCUMENTATION API",
+      "version": "1.0.0"
+    },
+    "host": "localhost:3000",
+    "basePath": "",
+    "schemes": ["http", "https"],
+    "paths": {
+      "/register/school": {
+        "post": {
+          "summary": "Registering New School",
+          "description": "Register a school",
+          "tags": ["School"],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "schema": {
+                "$ref": "#/definitions/School"
+              },
+              "required": true,
+              "description": "School Registeration"
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "School created"
+            }
+          }
+        }
+      },
+      "/list/allSchools": {
+        "get": {
+            "summary": "List of all schools",
+            "description": "displaying list of all schools",
+            "tags": ["School"],
+            "parameters": [
+              {
+                "schema": {
+                  "$ref": "#/definitions/School"
+                },
+                "description": "List of all schools"
+              }
+            ],
+            "responses": {
+              "201": {
+                "description": "School displayed"
+              }
+            }
+          }
+      },
+      "/getById/school": {
+        "get": {
+          "summary": "get  School by it's id",
+          "description": "searching a school by using it's id",
+          "tags": ["School"],
+          "parameters": [
+            {
+              "in": "query",
+              "name": "id",
+              "schema": {
+                "$ref": "#/definitions/School"
+              },
+              "required": true,
+              "description": "school id"
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "School displayed"
+            }
+          }
+        }
+      },
+      "/delete/school": {
+        "delete": {
+          "summary": "delete  School by it's id ",
+          "description": "searching a school by using it's id and delete it",
+          "tags": ["School"],
+          "parameters": [
+            {
+              "in": "query",
+              "name": "id",
+              "schema": {
+                "$ref": "#/definitions/School"
+              },
+              "required": true,
+              "description": "school id"
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "School deleted successfully"
+            }
+          }
+        }
+      }
+
+    },
+    "definitions": {
+      "School": {
+        "type": "object",
+        "properties": {
+          "SchoolName": {
+            "type": "string"
+          },
+          "SchoolLogo": {
+            "type": "string"
+          },
+          "SchoolEmail": {
+            "type": "string"
+          },
+          "SchoolAddress": {
+            "$ref": "#definitions/Place"
+          },
+          "SchoolBursar": {
+            "$ref": "#definitions/Details"
+          }
+        },
+        "required": ["SchoolName","SchoolLogo","SchoolEmail","SchoolAddress","SchoolBursar"]
+      },
+      "Place": {
+        "type": "object",
+        "properties": {
+          "Province": {
+            "type": "string"
+          },
+          "District": {
+            "type": "string"
+          },
+          "Sector": {
+            "type": "string"
+          },
+          "Cell": {
+            "type": "string"
+          },
+          "Village": {
+            "type":"string"
+          }
+        },
+        "required": ["Province","District","Sector","Cell","Village"]
+      },
+      "Details": {
+        "type": "object",
+        "properties": {
+          "FullName": {
+            "type": "string"
+          },
+          "Email": {
+            "type": "string"
+          }
+        },
+        "required": ["FullName","Email"]
+    }
+}
+}
+  
