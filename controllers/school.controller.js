@@ -46,7 +46,7 @@ export const getAllSchool = async (req, res, next) => {
 //getting a school by id 
 export const getSchoolById = async (req, res, next) => {
     try {
-        const getOne = await schoolModel.findById({ _id: req.query.id })
+        const getOne = await schoolModel.findById({ _id:req.query.id })
         //check if there is a school with that id and display error if not
         if (!getOne) {
             const error = new customError(`there is no school with id ${req.query.id}`, 404)
